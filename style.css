@@ -1,0 +1,105 @@
+html, body {
+	height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Yantramanav', sans-serif;
+}
+
+.container {
+/*	width: 80%;
+	height: 80%;*/
+	display: flex;
+	margin: auto;
+	position: fixed;
+	top: 70px; bottom: 70px; left: 150px; right: 150px;
+	/*padding: 50px;*/
+}
+
+#results {
+	/*margin: auto;*/
+	width: 35%;
+	height: 100%;
+	background-color: #eee;
+	overflow-y: scroll;
+}
+
+.caption {
+	font-size: 12px;
+	text-align: justify;
+}
+
+.timestamp {
+	font-size: 12px;
+    color: grey;
+    font-style: italic;
+    margin-left: 8px;
+}
+
+.source {
+	text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    /*padding-top: 4px;*/
+    /*padding-bottom: 4px;*/
+    color: grey;
+    margin-right: 8px;
+}
+
+.header {
+	padding: 30px 40px;
+	width: inherit;
+	position: fixed;
+	top: 70px;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+
+.empty-header {
+	height: 100px;
+}
+
+.city {
+	font-size: 50px;
+	font-weight: bold;
+	color: white;
+}
+
+.state {
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 18px;
+	color: #c1c1c1;
+}
+
+.info {
+	display: flex;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	line-height: 10px;
+	color: grey;
+}
+
+.title {
+	font-size: 17px;
+    font-weight: bold;
+}
+
+.result {
+	padding: 40px;
+	background-color: #f9f9f9;
+	margin: 40px 0;
+}
+
+#map {
+	margin: auto;
+	height: 100%;
+	width: 65%;
+}
+
+#name {
+	color:  rgba(0, 0, 0, 0.75);
+	position: fixed;
+	font-size: 120px;
+	bottom: 29px;
+	right: 190px;
+	font-weight: bold;
+}
