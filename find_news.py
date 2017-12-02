@@ -1,9 +1,12 @@
 import requests
 import json
+from flask import Flask
+app = Flask(__name__)
 
 GOOGLE_API_KEY = 'AIzaSyAHwf_cr7_74eJGebWn_oBQGue1SiSZD6I'
 NEWS_API_KEY = '8e35262201b141f18ab63b79b5c2b7c9'
 LOCATIONS = ["sublocality", "administrative_area_level_2", "administrative_area_level_1", "country"]
+
 
 
 def check_importance(input_types):
@@ -13,12 +16,11 @@ def check_importance(input_types):
 
     return False
 
-
 # Geocoding API Key = AIzaSyAHwf_cr7_74eJGebWn_oBQGue1SiSZD6I
-def get_city(lat, long):
+def get_city(lat, lng):
     to_return = []
     url = ('https://maps.googleapis.com/maps/api/geocode/json?latlng='
-          + str(lat) + ',' + str(long)
+          + str(lat) + ',' + str(lng)
           + '&key=' + GOOGLE_API_KEY)
 
     response = requests.get(url)
@@ -27,7 +29,7 @@ def get_city(lat, long):
         address_components = loaded_json['results'][0]['address_components']
         for x in address_components:
             if check_importance(x['types']):
-                to_return.append(x['long_name'])
+                to_return.append(x['lng_name'])
         return to_return
     else:
         print(response)
@@ -52,7 +54,7 @@ def get_articles(keywords_list):
     else:
         return -1
 
-
+#Converts json object into dictionary
 def parse_article(article):
     data = dict()
     data["title"] = article["title"]
@@ -72,9 +74,11 @@ def parse_top_articles(article_list, number):
         to_return.append(parse_article(article_list[i]))
     return to_return
 
-
-def get_top_articles(lat,long):
-    city = get_city(lat,long)
+@app.route('/')
+def get_top_articles():
+    lat =
+    long = 
+    city = get_city(lat,lng)
     if city is not -1:
         articles = get_articles(city)
         if articles is not -1:
@@ -84,3 +88,6 @@ def get_top_articles(lat,long):
             return top_articles_json_list
     else:
         return -1
+
+if __name__ == '__main__':
+   app.run(host="0.0.0.0", port=5000)
