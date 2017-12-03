@@ -1,6 +1,7 @@
 import requests
 import json
 from flask import Flask
+from flask import request
 app = Flask(__name__)
 
 GOOGLE_API_KEY = 'AIzaSyAHwf_cr7_74eJGebWn_oBQGue1SiSZD6I'
@@ -74,20 +75,25 @@ def parse_top_articles(article_list, number):
         to_return.append(parse_article(article_list[i]))
     return to_return
 
-@app.route('/')
+@app.route('/', methods = ['GET','POST'])
 def get_top_articles():
-    lat =
-    long = 
-    city = get_city(lat,lng)
-    if city is not -1:
-        articles = get_articles(city)
-        if articles is not -1:
-            top_articles_json_list = parse_top_articles(articles,10)
-            for x in top_articles_json_list:
-                print(x)
-            return top_articles_json_list
+    if (method == 'POST'):
+        lat = request.args.get('latitude');
+        lng = request.args.get('longitude');
+        city = get_city(lat,lng)
+        if city is not -1:
+            articles = get_articles(city)
+            if articles is not -1:
+                top_articles_json_list = parse_top_articles(articles,10)
+                for x in top_articles_json_list:
+                    print(x)
+                return top_articles_json_list
+        else:
+            return -1
     else:
-        return -1
+        print('hi')
+        return json.dump({'status':'OK'})
+
 
 if __name__ == '__main__':
    app.run(host="0.0.0.0", port=5000)
