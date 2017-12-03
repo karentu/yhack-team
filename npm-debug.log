@@ -1,8 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'run',
-1 verbose cli   'dev-build' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'watch' ]
 2 info using npm@3.10.10
 3 info using node@v6.9.4
 4 verbose config Skipping project config: /Users/ktu/.npmrc. (matches userconfig)
@@ -10,7 +7,7 @@
 5 verbose stack     at Error (native)
 6 verbose cwd /Users/ktu/yhack-team
 7 error Darwin 15.6.0
-8 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "dev-build"
+8 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "watch"
 9 error node v6.9.4
 10 error npm  v3.10.10
 11 error path /Users/ktu/package.json
