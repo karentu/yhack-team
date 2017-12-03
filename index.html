@@ -68,46 +68,46 @@
     	<div id="map"></div>
     	<div id="name">Mappable</div>
 	</div>
-    <script>
+    <script src = "script.js">
   //$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          'center': {'lat': 39.099477, 'lng': -94.604291},
-          'zoom': 4,
-					gestureHandling: 'greedy'
-        });
-				var latitude;
-				var longitude;
-				var marker;
-				map.addListener('click', function(e) {
-					lat = e.latLng.lat();
-					lng = e.latLng.lng();
-					//alert(e.latLng.lat());
-					//alert(e.latLng.lng());
-					$.ajax ({
-						type: 'POST',
-						url: 'http://0.0.0.0:5000/get_top_articles',
-						dataType: 'jsonp',
-						crossDomain: 'true',
-						data: {latitude : lat, longitude : lng},
-						 success: function(response) {
-							 alert(response);
-						 },
-						 error: function(error) {
-						 	console.log(error);
-						}
-					})
-					marker = new google.maps.Marker({
-					position: e.latLng,
-				  map: map,
-				  title: 'Click to zoom'
-				});
-				
-});
-      }
-			function setNews(response) {
-				alert(repsonse);
-			}
+//       function initMap() {
+//         var map = new google.maps.Map(document.getElementById('map'), {
+//           'center': {'lat': 39.099477, 'lng': -94.604291},
+//           'zoom': 4,
+// 					gestureHandling: 'greedy'
+//         });
+// 				var latitude;
+// 				var longitude;
+// 				var marker;
+// 				map.addListener('click', function(e) {
+// 					lat = e.latLng.lat();
+// 					lng = e.latLng.lng();
+// 					//alert(e.latLng.lat());
+// 					//alert(e.latLng.lng());
+// 					$.ajax ({
+// 						type: 'POST',
+// 						url: 'http://0.0.0.0:5000/get_top_articles',
+// 						dataType: 'jsonp',
+// 						crossDomain: 'true',
+// 						data: {latitude : lat, longitude : lng},
+// 						 success: function(response) {
+// 							 alert(response);
+// 						 },
+// 						 error: function(error) {
+// 						 	console.log(error);
+// 						}
+// 					})
+// 					marker = new google.maps.Marker({
+// 					position: e.latLng,
+// 				  map: map,
+// 				  title: 'Click to zoom'
+// 				});
+//
+// });
+//       }
+// 			function setNews(response) {
+// 				alert(repsonse);
+// 			}
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3Ejf0EzxClDbW0ouPgtuyBcDW1utz68&callback=initMap"
     async defer></script>
